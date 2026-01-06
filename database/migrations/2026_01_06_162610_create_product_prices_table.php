@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('currency_id');
-            $table->decimal('price');
+            $table->decimal('price',10,2)->default(0);
             $table->timestamps();
         });
     }

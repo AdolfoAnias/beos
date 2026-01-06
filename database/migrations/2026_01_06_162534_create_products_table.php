@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->decimal('price',4,2);
+            $table->decimal('price',10,2)->default(0);
             $table->integer('currency_id');
-            $table->decimal('tax_cost',4,2);
+            $table->decimal('tax_cost',10,2)->default(0);
+            $table->decimal('manufacturing_cost',10,2)->default(0);
             $table->timestamps();
         });
     }

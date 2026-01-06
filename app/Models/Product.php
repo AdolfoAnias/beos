@@ -14,4 +14,9 @@ class Product extends Model
         'tax_cost',
         'manufacturing_cost'
     ];
+
+    public function prices()
+    {
+        return $this->hasMany(ProductPrice::class);
+    }
 }
