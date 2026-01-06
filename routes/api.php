@@ -22,4 +22,13 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
     Route::get('/products/{id}/prices', [ProductController::class, 'getProductPrice']);
     Route::post('/products/{id}/prices', [ProductController::class, 'postProductPrice']);
+
+    Route::get('/currencies', [CurrencyController::class, 'index']);
+    Route::post('/currencies', [CurrencyController::class, 'store']);
+    Route::get('/currencies/{id}', [CurrencyController::class, 'show']);
+    Route::put('/currencies/{id}', [CurrencyController::class, 'update']);
+    Route::delete('/currencies/{id}', [CurrencyController::class, 'destroy']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
+

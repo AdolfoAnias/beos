@@ -61,10 +61,10 @@ class ProductService
         }
     }
 
-    public function update(Product $product, array $data): Product
+    public function update($id, array $data): Product
     {
-        $product->update($data);
-
+        $product = Product::findOrFail($id);  // ⭐ Buscar por ID
+        $product->update($data);                // ⭐ Actualizar y guardar
         return $product;
     }
 

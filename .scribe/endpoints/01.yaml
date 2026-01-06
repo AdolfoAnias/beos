@@ -1,0 +1,238 @@
+name: Autenticación
+description: |-
+
+  APIs para registro y login de usuarios
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      custom: []
+      groupName: Autenticación
+      groupDescription: |-
+
+        APIs para registro y login de usuarios
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Registrar nuevo usuario'
+      description: 'Crea una nueva cuenta de usuario y genera token de acceso personal.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Nombre completo del usuario. Max: 255 caracteres.'
+        required: true
+        example: 'Juan Pérez'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: 'Email único del usuario. Debe ser formato válido.'
+        required: true
+        example: juan@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Contraseña. Mínimo 8 caracteres.'
+        required: true
+        example: miContraseña123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Juan Pérez'
+      email: juan@example.com
+      password: miContraseña123
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+            "user": {
+              "id": 1,
+              "name": "Juan Pérez",
+              "email": "juan@example.com",
+              "email_verified_at": null,
+              "created_at": "2026-01-06T17:00:00.000000Z"
+            },
+            "access_token": "1|abc123def456ghi789...",
+            "token_type": "Bearer"
+          }
+        headers: []
+        description: ''
+    responseFields:
+      user:
+        custom: []
+        name: user
+        description: 'App\Models\User El usuario creado.'
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      access_token:
+        custom: []
+        name: access_token
+        description: 'Token de acceso para autenticar requests futuras.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      token_type:
+        custom: []
+        name: token_type
+        description: 'Siempre "Bearer".'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      custom: []
+      groupName: Autenticación
+      groupDescription: |-
+
+        APIs para registro y login de usuarios
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Iniciar sesión'
+      description: 'Autentica usuario y genera nuevo token de acceso.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        custom: []
+        name: email
+        description: 'Email del usuario.'
+        required: true
+        example: juan@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Contraseña del usuario.'
+        required: true
+        example: miContraseña123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      email: juan@example.com
+      password: miContraseña123
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "user": {
+              "id": 1,
+              "name": "Juan Pérez",
+              "email": "juan@example.com"
+            },
+            "access_token": "2|xyz789uvw456rst123...",
+            "token_type": "Bearer"
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "message": "Credenciales inválidas"
+          }
+        headers: []
+        description: ''
+    responseFields:
+      user:
+        custom: []
+        name: user
+        description: 'App\Models\User Usuario autenticado.'
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      access_token:
+        custom: []
+        name: access_token
+        description: 'Nuevo token de acceso.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      token_type:
+        custom: []
+        name: token_type
+        description: 'Siempre "Bearer".'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    auth: []
+    controller: null
+    method: null
+    route: null
