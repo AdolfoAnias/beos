@@ -7,6 +7,7 @@ use App\Models\Currency;
 use Illuminate\Http\Request;
 use App\Services\CurrencyService;
 use Illuminate\Http\JsonResponse;
+use App\Http\Resources\CurrencyResource;
 
 /**
  * @group Monedas
@@ -50,10 +51,10 @@ class CurrencyController extends Controller
      *   }
      * }
      */
-    public function index(Request $request): JsonResponse
+    public function index(Request $request)
     {
         $currencies = $this->currencyService->list($request->all());
-        return response()->json($currencies);
+        return CurrencyResource::collection($currencies);
     }
 
     /**
